@@ -341,7 +341,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     /**
      * Add service method to service map
      *
-     * @param  Zend_Server_Reflection_Function $method
+     * @param  Zend_Server_Method_Definition $method
      * @return void
      */
     protected function _addMethodServiceMap(Zend_Server_Method_Definition $method)
@@ -393,7 +393,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     /**
      * Get method param type
      *
-     * @param  Zend_Server_Reflection_Function_Abstract $method
+     * @param  Zend_Server_Method_Definition $method
      * @return string|array
      */
     protected function _getParams(Zend_Server_Method_Definition $method)
@@ -455,7 +455,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     /**
      * Get method return type
      *
-     * @param  Zend_Server_Reflection_Function_Abstract $method
+     * @param  Zend_Server_Method_Definition $method
      * @return string|array
      */
     protected function _getReturnType(Zend_Server_Method_Definition $method)

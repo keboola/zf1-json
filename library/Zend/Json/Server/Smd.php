@@ -224,7 +224,7 @@ class Zend_Json_Server_Smd
     /**
      * Set service ID
      *
-     * @param  string $Id
+     * @param  string $id
      * @return Zend_Json_Server_Smd
      */
     public function setId($id)

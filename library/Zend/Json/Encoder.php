@@ -186,7 +186,7 @@ class Zend_Json_Encoder
      * the last index is (count($array) -1); any deviation from that is
      * considered an associative array, and will be encoded as such.
      *
-     * @param array& $array
+     * @param array $array
      * @return string
      */
     protected function _encodeArray(&$array)
@@ -226,7 +226,7 @@ class Zend_Json_Encoder
      * If value type is not a string, number, boolean, or null, the string
      * 'null' is returned.
      *
-     * @param mixed& $value
+     * @param mixed $value
      * @return string
      */
     protected function _encodeDatum(&$value)
@@ -249,7 +249,7 @@ class Zend_Json_Encoder
     /**
      * JSON encode a string value by escaping characters as necessary
      *
-     * @param string& $value
+     * @param string $string
      * @return string
      */
     protected function _encodeString(&$string)

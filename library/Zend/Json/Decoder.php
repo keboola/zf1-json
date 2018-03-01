@@ -194,7 +194,7 @@ class Zend_Json_Decoder
      * {@link $_decodeType}. If invalid $_decodeType present, returns as an
      * array.
      *
-     * @return array|StdClass
+     * @return array|stdClass
      */
     protected function _decodeObject()
     {
@@ -471,7 +471,7 @@ class Zend_Json_Decoder
      *
      * @link   http://solarphp.com/
      * @link   http://svn.solarphp.com/core/trunk/Solar/Json.php
-     * @param  string $value
+     * @param  string $chrs
      * @return string
      */
     public static function decodeUnicodeString($chrs)
