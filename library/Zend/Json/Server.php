@@ -75,7 +75,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     protected $_smdMethods;
 
     /**
-     * @var Zend_Server_Description
+     * @var Zend_Server_Definition
      */
     protected $_table;
 
