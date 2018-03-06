@@ -162,7 +162,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
      *
      * @param  string $fault
      * @param  int $code
-     * @return false
+     * @return Zend_Json_Server_Error
      */
     public function fault($fault = null, $code = 404, $data = null)
     {
@@ -196,7 +196,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
         // Emit response?
         if ($this->autoEmitResponse()) {
             echo $response;
-            return;
+            return null;
         }
 
         // or return it?
@@ -497,7 +497,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     /**
      * Internal method for handling request
      *
-     * @return void
+     * @return Zend_Json_Server_Error|null
      */
     protected function _handle()
     {

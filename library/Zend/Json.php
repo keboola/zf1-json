@@ -187,7 +187,7 @@ class Zend_Json
      * NOTE: This method is used internally by the encode method.
      *
      * @see encode
-     * @param array|object|Zend_Json_Expr $value a string - object property to be encoded
+     * @param array|Iterable|Zend_Json_Expr $value a string - object property to be encoded
      * @param array $javascriptExpressions
      * @param null $currentKey
      *
