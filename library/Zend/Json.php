@@ -189,7 +189,7 @@ class Zend_Json
      * @see encode
      * @param array|Iterable|Zend_Json_Expr $value a string - object property to be encoded
      * @param array $javascriptExpressions
-     * @param null $currentKey
+     * @param null|int $currentKey
      *
      * @internal param mixed $valueToCheck
      * @return string|array|object

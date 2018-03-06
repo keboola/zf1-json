@@ -139,7 +139,7 @@ class Zend_Json_Server_Response
     /**
      * Set JSON-RPC version
      *
-     * @param  string $version
+     * @param  string|array $version
      * @return Zend_Json_Server_Response
      */
     public function setVersion($version)
