@@ -20,25 +20,6 @@
  * @version    $Id$
  */
 
-/**
- * @see Zend_Json
- */
-require_once 'Zend/Json.php';
-
-/**
- * @see Zend_Json_Expr
- */
-require_once 'Zend/Json/Expr.php';
-
-/**
- * @see Zend_Json_Encoder
- */
-require_once 'Zend/Json/Encoder.php';
-
-/**
- * @see Zend_Json_Decoder
- */
-require_once 'Zend/Json/Decoder.php';
 
 /**
  * @category   Zend
@@ -126,8 +107,8 @@ class Zend_JsonTest extends PHPUnit\Framework\TestCase
         $o = new stdClass();
         $o->test = 1;
         $o->faz = 'fubar';
-        
-        // The escaped double-quote in item 'stringwithjsonchars' ensures that 
+
+        // The escaped double-quote in item 'stringwithjsonchars' ensures that
         // escaped double-quotes don't throw off prettyPrint's string literal detection
         $test = array(
             'simple'=>'simple test string',
@@ -410,12 +391,11 @@ EOB;
             $this->fail('Object cycling checks should check for recursion, not duplicate usage of an item');
         }
 
-        try {
-            $encoded = Zend_Json_Encoder::encode($everything, true);
-            $this->fail('Object cycling not allowed when cycleCheck parameter is true');
-        } catch (Exception $e) {
-            // success
-        }
+        $this->expectException(\Zend_Json_Exception::class);
+        $this->expectExceptionMessage(
+            'Cycles not supported in JSON encoding, cycle introduced by class "Zend_JsonTest_Item"'
+        );
+        $encoded = Zend_Json_Encoder::encode($everything, true);
     }
 
     /**
@@ -824,7 +804,7 @@ EOB;
         $expectedDecoding = '{"__className":"ArrayIterator","0":"foo"}';
         $this->assertEquals($encoded, $expectedDecoding);
     }
-    
+
     /**
      * @group ZF-11356
      */
@@ -833,11 +813,11 @@ EOB;
         if (version_compare(PHP_VERSION, '5.3.0') === -1) {
             $this->markTestSkipped('Namespaces not available in PHP < 5.3.0');
         }
-        
-        require_once dirname(__FILE__ ) . "/Json/_files/ZF11356-NamespacedClass.php";        
+
+        require_once dirname(__FILE__ ) . "/Json/_files/ZF11356-NamespacedClass.php";
         $className = '\Zend\JsonTest\ZF11356\NamespacedClass';
         $inputValue = new $className(array('foo'));
-        
+
         $encoded = Zend_Json_Encoder::encode($inputValue);
         $this->assertEquals(
             '{"__className":"Zend\\\\JsonTest\\\\ZF11356\\\\NamespacedClass","0":"foo"}',
@@ -909,14 +889,14 @@ EOB;
         $json = Zend_Json::encode($array);
         $this->assertEquals($expected, $json);
     }
-    
+
     /**
      * @group ZF-7586
      */
     public function testWillDecodeStructureWithEmptyKeyToObjectProperly()
     {
         Zend_Json::$useBuiltinEncoderDecoder = true;
-        
+
         $json = '{"":"test"}';
         $object = Zend_Json::decode($json, Zend_Json::TYPE_OBJECT);
         $this->assertTrue(isset($object->_empty_));
@@ -1005,7 +985,7 @@ class ZF11167_ToArrayClass
  * @see ZF-11167
  */
 class ZF11167_ToArrayToJsonClass extends ZF11167_ToArrayClass
-{    
+{
     public function toJson()
     {
         return Zend_Json::encode('bogus');

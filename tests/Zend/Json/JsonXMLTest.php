@@ -20,13 +20,6 @@
  * @version    $Id$
  */
 
-error_reporting( E_ALL | E_STRICT ); // now required for each test suite
-
-/**
- * Zend_Json
- */
-require_once 'Zend/Json.php';
-
 
 /**
  * @category   Zend
@@ -593,17 +586,17 @@ EOT;
     public function testNestingDepthIsHandledProperlyWhenNestingDepthExceedsMaximum($xmlStringContents)
     {
         $this->expectException(\Zend_Json_Exception::class);
-        
+
         Zend_Json::$maxRecursionDepthAllowed = 1;
         Zend_Json::fromXml($xmlStringContents, true);
     }
-    
+
     /**
      * @group ZF-11385
      * @dataProvider providerNestingDepthIsHandledProperly
      */
     public function testNestingDepthIsHandledProperlyWhenNestingDepthDoesNotExceedMaximum($xmlStringContents)
-    {   
+    {
         try {
             Zend_Json::$maxRecursionDepthAllowed = 25;
             $jsonString = Zend_Json::fromXml($xmlStringContents, true);
@@ -614,7 +607,7 @@ EOT;
             $this->fail('Zend_Json::fromXml does not implement recursion check properly');
         }
     }
-    
+
     /**
      * XML document provider for ZF-11385 tests
      * @return array
@@ -656,12 +649,12 @@ EOT;
 			<feed_status>D</feed_status>
 		</defaults>
 	</message_type>
-	<execution_time>0.0790269374847</execution_time>	
+	<execution_time>0.0790269374847</execution_time>
 </response>
 EOT;
         return array(array($xmlStringContents));
     }
-    
+
 } // End of class Zend_Json_JsonXMLTest
 
 

@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Json/Server.php';
-require_once 'Zend/Json/Server/Request.php';
-require_once 'Zend/Json/Server/Response.php';
-require_once 'Zend/Json.php';
-require_once 'Zend/Server/Exception.php';
 
 /**
  * Test class for Zend_Json_Server

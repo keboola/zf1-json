@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Json/Server/Cache.php';
-require_once 'Zend/Json/Server.php';
 
 /**
  * Test class for Zend_Json_Server_Cache

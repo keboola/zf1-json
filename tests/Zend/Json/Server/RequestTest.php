@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Json/Server/Request.php';
-require_once 'Zend/Json.php';
 
 /**
  * @category   Zend

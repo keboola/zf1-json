@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Json/Server/Error.php';
-require_once 'Zend/Json.php';
 
 /**
  * Test class for Zend_Json_Server_Error

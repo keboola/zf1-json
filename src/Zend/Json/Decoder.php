@@ -81,6 +81,11 @@ class Zend_Json_Decoder
     protected $_decodeType;
 
     /**
+     * @var mixed
+     */
+    protected $_tokenValue;
+
+    /**
      * Constructor
      *
      * @param string $source String source to decode

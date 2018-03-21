@@ -20,9 +20,6 @@
  * @version    $Id$
  */
 
-require_once 'Zend/Json/Server/Smd.php';
-require_once 'Zend/Json/Server/Smd/Service.php';
-require_once 'Zend/Json.php';
 
 /**
  * Test class for Zend_Json_Server_Smd
