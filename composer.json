@@ -37,5 +37,9 @@
         "test": "phpunit ./tests",
         "test-with-coverage": "phpunit --coverage-clover=clover.xml ./tests",
         "phpstan": "phpstan analyze -l4 -c phpstan.neon --no-progress ./src --ansi"
+    },
+    "suggest": {
+        "ext-json": "Can use built-in json_encode/json_decode functions if available",
+        "ext-mbstring": "Will use mbstring extension for encoding/decoding if available"
     }
 }
