@@ -180,7 +180,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
 
     public function testParamsShouldAcceptArrayOfTypes()
     {
-        $type   = array('integer', 'string');
+        $type = array('integer', 'string');
         $this->service->addParam($type);
         $params = $this->service->getParams();
         $param  = array_shift($params);

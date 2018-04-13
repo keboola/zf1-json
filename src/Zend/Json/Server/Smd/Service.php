@@ -33,7 +33,7 @@ class Zend_Json_Server_Smd_Service
      * Service metadata
      * @var string
      */
-    protected $_envelope  = Zend_Json_Server_Smd::ENV_JSONRPC_1;
+    protected $_envelope = Zend_Json_Server_Smd::ENV_JSONRPC_1;
     protected $_name;
     protected $_return;
     protected $_target;
@@ -373,7 +373,7 @@ class Zend_Json_Server_Smd_Service
                 $type[$key] = $this->_validateParamType($returnType, true);
             }
         } else {
-            throw new Zend_Json_Server_Exception('Invalid param type provided ("' . gettype($type) .'")');
+            throw new Zend_Json_Server_Exception('Invalid param type provided ("' . gettype($type) . '")');
         }
         $this->_return = $type;
         return $this;
@@ -442,7 +442,7 @@ class Zend_Json_Server_Smd_Service
     protected function _validateParamType($type, $isReturn = false)
     {
         if (!is_string($type)) {
-            throw new Zend_Json_Server_Exception('Invalid param type provided ("' . $type .'")');
+            throw new Zend_Json_Server_Exception('Invalid param type provided ("' . $type . '")');
         }
 
         if (!array_key_exists($type, $this->_paramMap)) {

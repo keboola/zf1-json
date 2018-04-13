@@ -212,9 +212,9 @@ class Zend_Json_Server_RequestTest extends PHPUnit\Framework\TestCase
 
     public function testLoadingFromJsonShouldSetJsonRpcVersionWhenPresent()
     {
-        $options = $this->getOptions();
+        $options            = $this->getOptions();
         $options['jsonrpc'] = '2.0';
-        $json    = Zend_Json::encode($options);
+        $json               = Zend_Json::encode($options);
         $this->request->loadJson($json);
         $this->assertEquals('2.0', $this->request->getVersion());
     }
@@ -223,7 +223,7 @@ class Zend_Json_Server_RequestTest extends PHPUnit\Framework\TestCase
     {
         $options = $this->getOptions();
         $this->request->setOptions($options);
-        $json    = $this->request->toJson();
+        $json = $this->request->toJson();
         $this->validateJson($json, $options);
     }
 
@@ -231,7 +231,7 @@ class Zend_Json_Server_RequestTest extends PHPUnit\Framework\TestCase
     {
         $options = $this->getOptions();
         $this->request->setOptions($options);
-        $json    = $this->request->__toString();
+        $json = $this->request->__toString();
         $this->validateJson($json, $options);
     }
 
@@ -253,7 +253,7 @@ class Zend_Json_Server_RequestTest extends PHPUnit\Framework\TestCase
                 'four',
                 true,
             ),
-            'id'     => 'foobar'
+            'id' => 'foobar'
         );
     }
 

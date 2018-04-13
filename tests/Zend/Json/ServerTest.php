@@ -86,7 +86,7 @@ class Zend_Json_ServerTest extends PHPUnit\Framework\TestCase
     public function testBindingClassToServerShouldRegisterAllPublicMethods()
     {
         $this->server->setClass('Zend_Json_Server');
-        $test = $this->server->getFunctions();
+        $test    = $this->server->getFunctions();
         $methods = get_class_methods('Zend_Json_Server');
         foreach ($methods as $method) {
             if ('_' == $method[0]) {
@@ -108,7 +108,7 @@ class Zend_Json_ServerTest extends PHPUnit\Framework\TestCase
     {
         $object = new Zend_Json_Server();
         $this->server->setClass($object);
-        $test = $this->server->getFunctions();
+        $test    = $this->server->getFunctions();
         $methods = get_class_methods($object);
         foreach ($methods as $method) {
             if ('_' == $method[0]) {
@@ -122,7 +122,7 @@ class Zend_Json_ServerTest extends PHPUnit\Framework\TestCase
     {
         $this->server->setClass('Zend_Json_Server')
                      ->setClass(new Zend_Json());
-        $methods = $this->server->getFunctions();
+        $methods    = $this->server->getFunctions();
         $zjsMethods = get_class_methods('Zend_Json_Server');
         $zjMethods  = get_class_methods('Zend_Json');
         $this->assertTrue(count($zjsMethods) < count($methods));
@@ -324,43 +324,43 @@ class Zend_Json_ServerTest extends PHPUnit\Framework\TestCase
     public function testHandleShouldAllowNamedParamsInAnyOrder1()
     {
         $this->server->setClass('Zend_Json_ServerTest_Foo')
-                     ->setAutoEmitResponse( false );
+                     ->setAutoEmitResponse(false);
         $request = $this->server->getRequest();
         $request->setMethod('bar')
-                ->setParams( array(
+                ->setParams(array(
                     'three' => 3,
                     'two'   => 2,
                     'one'   => 1
                 ))
-                ->setId( 'foo' );
+                ->setId('foo');
         $response = $this->server->handle();
-        $result = $response->getResult();
+        $result   = $response->getResult();
 
-        $this->assertInternalType( 'array', $result  );
-        $this->assertEquals( 1, $result[0] );
-        $this->assertEquals( 2, $result[1] );
-        $this->assertEquals( 3, $result[2] );
+        $this->assertInternalType('array', $result);
+        $this->assertEquals(1, $result[0]);
+        $this->assertEquals(2, $result[1]);
+        $this->assertEquals(3, $result[2]);
     }
 
     public function testHandleShouldAllowNamedParamsInAnyOrder2()
     {
         $this->server->setClass('Zend_Json_ServerTest_Foo')
-                     ->setAutoEmitResponse( false );
+                     ->setAutoEmitResponse(false);
         $request = $this->server->getRequest();
         $request->setMethod('bar')
-                ->setParams( array(
+                ->setParams(array(
                     'three' => 3,
                     'one'   => 1,
                     'two'   => 2,
-                ) )
-                ->setId( 'foo' );
+                ))
+                ->setId('foo');
         $response = $this->server->handle();
-        $result = $response->getResult();
+        $result   = $response->getResult();
 
-        $this->assertInternalType( 'array', $result  );
-        $this->assertEquals( 1, $result[0] );
-        $this->assertEquals( 2, $result[1] );
-        $this->assertEquals( 3, $result[2] );
+        $this->assertInternalType('array', $result);
+        $this->assertEquals(1, $result[0]);
+        $this->assertEquals(2, $result[1]);
+        $this->assertEquals(3, $result[2]);
     }
 
     public function testHandleRequestWithErrorsShouldReturnErrorResponse()
@@ -438,7 +438,7 @@ class Zend_Json_ServerTest extends PHPUnit\Framework\TestCase
     {
         $this->server->setClass('Zend_Json_ServerTest_Foo');
         $functions = $this->server->getFunctions();
-        $server = new Zend_Json_Server();
+        $server    = new Zend_Json_Server();
         $server->loadFunctions($functions);
         $this->assertEquals($functions->toArray(), $server->getFunctions()->toArray());
     }
@@ -457,7 +457,7 @@ class Zend_Json_ServerTest_Foo
      * @param  mixed $three
      * @return array
      */
-    static public function staticBar($one, $two = 'two', $three = null)
+    public static function staticBar($one, $two = 'two', $three = null)
     {
         return array($one, $two, $three);
     }

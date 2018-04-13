@@ -100,11 +100,11 @@ class Zend_Json_Server extends Zend_Server_Abstract
         if (is_string($function)) {
             $method = Zend_Server_Reflection::reflectFunction($function, $argv, $namespace);
         } else {
-            $class  = array_shift($function);
-            $action = array_shift($function);
+            $class      = array_shift($function);
+            $action     = array_shift($function);
             $reflection = Zend_Server_Reflection::reflectClass($class, $argv, $namespace);
-            $methods = $reflection->getMethods();
-            $found   = false;
+            $methods    = $reflection->getMethods();
+            $found      = false;
             foreach ($methods as $method) {
                 if ($action == $method->getName()) {
                     $found = true;
@@ -335,9 +335,9 @@ class Zend_Json_Server extends Zend_Server_Abstract
             'name'   => $method->getName(),
             'return' => $this->_getReturnType($method),
         );
-        $params = $this->_getParams($method);
+        $params                = $this->_getParams($method);
         $serviceInfo['params'] = $params;
-        $serviceMap = $this->getServiceMap();
+        $serviceMap            = $this->getServiceMap();
         if (false !== $serviceMap->getService($serviceInfo['name'])) {
             $serviceMap->removeService($serviceInfo['name']);
         }
@@ -464,7 +464,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
     {
         if (null === $this->_smdMethods) {
             $this->_smdMethods = array();
-            $methods = get_class_methods('Zend_Json_Server_Smd');
+            $methods           = get_class_methods('Zend_Json_Server_Smd');
             foreach ($methods as $key => $method) {
                 if (!preg_match('/^(set|get)/', $method)) {
                     continue;
@@ -511,14 +511,12 @@ class Zend_Json_Server extends Zend_Server_Abstract
         }
 
         //Make sure named parameters are passed in correct order
-        if ( is_string( key( $params ) ) ) {
-
+        if (is_string(key($params))) {
             $callback = $invocable->getCallback();
             if ('function' == $callback->getType()) {
-                $reflection = new ReflectionFunction( $callback->getFunction() );
+                $reflection = new ReflectionFunction($callback->getFunction());
                 $refParams  = $reflection->getParameters();
             } else {
-
                 $reflection = new ReflectionMethod(
                     $callback->getClass(),
                     $callback->getMethod()
@@ -527,14 +525,14 @@ class Zend_Json_Server extends Zend_Server_Abstract
             }
 
             $orderedParams = array();
-            foreach( $reflection->getParameters() as $refParam ) {
-                if( isset( $params[ $refParam->getName() ] ) ) {
+            foreach ($reflection->getParameters() as $refParam) {
+                if (isset($params[ $refParam->getName() ])) {
                     $orderedParams[ $refParam->getName() ] = $params[ $refParam->getName() ];
-                } elseif( $refParam->isOptional() ) {
+                } elseif ($refParam->isOptional()) {
                     $orderedParams[ $refParam->getName() ] = $refParam->getDefaultValue();
                 } else {
                     throw new Zend_Server_Exception(
-                        'Method ' . $request->getMethod() .  ' is missing required parameter: ' . $refParam->getName()
+                        'Method ' . $request->getMethod() . ' is missing required parameter: ' . $refParam->getName()
                     );
                 }
             }

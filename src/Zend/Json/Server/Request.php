@@ -95,7 +95,7 @@ class Zend_Json_Server_Request
     public function addParam($value, $key = null)
     {
         if ((null === $key) || !is_string($key)) {
-            $index = count($this->_params);
+            $index                 = count($this->_params);
             $this->_params[$index] = $value;
         } else {
             $this->_params[$key] = $value;

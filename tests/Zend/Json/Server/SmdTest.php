@@ -208,7 +208,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit\Framework\TestCase
     {
         $service = new Zend_Json_Server_Smd_Service('foo');
         $this->smd->addService($service);
-        $test    = new Zend_Json_Server_Smd_Service('foo');
+        $test = new Zend_Json_Server_Smd_Service('foo');
         try {
             $this->smd->addService($test);
             $this->fail('Adding service with existing service name should throw exception');
@@ -231,9 +231,9 @@ class Zend_Json_Server_SmdTest extends PHPUnit\Framework\TestCase
 
     public function testShouldBeAbleToAddManyServicesAtOnceWithArrayOfServiceObjects()
     {
-        $one   = new Zend_Json_Server_Smd_Service('one');
-        $two   = new Zend_Json_Server_Smd_Service('two');
-        $three = new Zend_Json_Server_Smd_Service('three');
+        $one      = new Zend_Json_Server_Smd_Service('one');
+        $two      = new Zend_Json_Server_Smd_Service('two');
+        $three    = new Zend_Json_Server_Smd_Service('three');
         $services = array($one, $two, $three);
         $this->smd->addServices($services);
         $test = $this->smd->getServices();
@@ -254,7 +254,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit\Framework\TestCase
 
     public function testShouldBeAbleToAddManyServicesAtOnceWithMixedArrayOfObjectsAndArrays()
     {
-        $two = new Zend_Json_Server_Smd_Service('two');
+        $two      = new Zend_Json_Server_Smd_Service('two');
         $services = array(
             array('name' => 'one'),
             $two,
@@ -269,7 +269,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit\Framework\TestCase
     public function testSetServicesShouldOverwriteExistingServices()
     {
         $this->testShouldBeAbleToAddManyServicesAtOnceWithMixedArrayOfObjectsAndArrays();
-        $five = new Zend_Json_Server_Smd_Service('five');
+        $five     = new Zend_Json_Server_Smd_Service('five');
         $services = array(
             array('name' => 'four'),
             $five,

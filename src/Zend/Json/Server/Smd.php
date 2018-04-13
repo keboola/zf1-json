@@ -292,12 +292,11 @@ class Zend_Json_Server_Smd
      */
     public function addService($service)
     {
-
         if ($service instanceof Zend_Json_Server_Smd_Service) {
             $name = $service->getName();
         } elseif (is_array($service)) {
             $service = new Zend_Json_Server_Smd_Service($service);
-            $name = $service->getName();
+            $name    = $service->getName();
         } else {
             throw new Zend_Json_Server_Exception('Invalid service passed to addService()');
         }
@@ -389,10 +388,10 @@ class Zend_Json_Server_Smd
         $envelope    = $this->getEnvelope();
         $contentType = $this->getContentType();
         $SMDVersion  = self::SMD_VERSION;
-        $service = compact('transport', 'envelope', 'contentType', 'SMDVersion');
+        $service     = compact('transport', 'envelope', 'contentType', 'SMDVersion');
 
         if (null !== ($target = $this->getTarget())) {
-            $service['target']     = $target;
+            $service['target'] = $target;
         }
         if (null !== ($id = $this->getId())) {
             $service['id'] = $id;
@@ -420,7 +419,7 @@ class Zend_Json_Server_Smd
     {
         $SMDVersion  = '.1';
         $serviceType = 'JSON-RPC';
-        $service = compact('SMDVersion', 'serviceType');
+        $service     = compact('SMDVersion', 'serviceType');
 
         $target = $this->getTarget();
 
@@ -435,7 +434,7 @@ class Zend_Json_Server_Smd
                 $params = array();
                 foreach ($svc->getParams() as $param) {
                     $paramName = array_key_exists('name', $param) ? $param['name'] : $param['type'];
-                    $params[] = array(
+                    $params[]  = array(
                         'name' => $paramName,
                         'type' => $param['type'],
                     );
@@ -470,4 +469,3 @@ class Zend_Json_Server_Smd
         return $this->toJson();
     }
 }
-

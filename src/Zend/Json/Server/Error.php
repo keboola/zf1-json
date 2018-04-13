@@ -194,4 +194,3 @@ class Zend_Json_Server_Error
         return $this->toJson();
     }
 }
-
