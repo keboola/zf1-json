@@ -285,11 +285,11 @@ class Zend_Json_Decoder
     protected function _eatWhitespace()
     {
         if (preg_match(
-                '/([\t\b\f\n\r ])*/s',
-                $this->_source,
-                $matches,
-                PREG_OFFSET_CAPTURE,
-                $this->_offset
+            '/([\t\b\f\n\r ])*/s',
+            $this->_source,
+            $matches,
+            PREG_OFFSET_CAPTURE,
+            $this->_offset
         )
             && $matches[0][1] == $this->_offset) {
             $this->_offset += strlen($matches[0][0]);

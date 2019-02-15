@@ -475,8 +475,8 @@ class Zend_Json_Encoder
                     $char = pack(
                         'C*',
                         $ord_var_c,
-                                 ord($value[$i + 1]),
-                                 ord($value[$i + 2])
+                        ord($value[$i + 1]),
+                        ord($value[$i + 2])
                     );
                     $i += 2;
                     $utf16 = self::_utf82utf16($char);
@@ -489,9 +489,9 @@ class Zend_Json_Encoder
                     $char = pack(
                         'C*',
                         $ord_var_c,
-                                 ord($value[$i + 1]),
-                                 ord($value[$i + 2]),
-                                 ord($value[$i + 3])
+                        ord($value[$i + 1]),
+                        ord($value[$i + 2]),
+                        ord($value[$i + 3])
                     );
                     $i += 3;
                     $utf16 = self::_utf82utf16($char);
@@ -504,10 +504,10 @@ class Zend_Json_Encoder
                     $char = pack(
                         'C*',
                         $ord_var_c,
-                                 ord($value[$i + 1]),
-                                 ord($value[$i + 2]),
-                                 ord($value[$i + 3]),
-                                 ord($value[$i + 4])
+                        ord($value[$i + 1]),
+                        ord($value[$i + 2]),
+                        ord($value[$i + 3]),
+                        ord($value[$i + 4])
                     );
                     $i += 4;
                     $utf16 = self::_utf82utf16($char);
@@ -520,11 +520,11 @@ class Zend_Json_Encoder
                     $char = pack(
                         'C*',
                         $ord_var_c,
-                                 ord($value[$i + 1]),
-                                 ord($value[$i + 2]),
-                                 ord($value[$i + 3]),
-                                 ord($value[$i + 4]),
-                                 ord($value[$i + 5])
+                        ord($value[$i + 1]),
+                        ord($value[$i + 2]),
+                        ord($value[$i + 3]),
+                        ord($value[$i + 4]),
+                        ord($value[$i + 5])
                     );
                     $i += 5;
                     $utf16 = self::_utf82utf16($char);

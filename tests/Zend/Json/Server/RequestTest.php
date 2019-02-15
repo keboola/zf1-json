@@ -63,7 +63,7 @@ class Zend_Json_Server_RequestTest extends PHPUnit\Framework\TestCase
     {
         $this->request->addParam('foo');
         $params = $this->request->getParams();
-        $this->assertEquals(1, count($params));
+        $this->assertCount(1, $params);
         $test = array_shift($params);
         $this->assertEquals('foo', $test);
     }
@@ -72,7 +72,7 @@ class Zend_Json_Server_RequestTest extends PHPUnit\Framework\TestCase
     {
         $this->request->addParam('bar', 'foo');
         $params = $this->request->getParams();
-        $this->assertEquals(1, count($params));
+        $this->assertCount(1, $params);
         $this->assertArrayHasKey('foo', $params);
         $this->assertEquals('bar', $params['foo']);
     }

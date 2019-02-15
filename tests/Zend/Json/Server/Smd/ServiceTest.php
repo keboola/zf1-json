@@ -173,7 +173,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
     {
         $this->service->addParam('integer');
         $params = $this->service->getParams();
-        $this->assertEquals(1, count($params));
+        $this->assertCount(1, $params);
         $param = array_shift($params);
         $this->assertEquals('integer', $param['type']);
     }
@@ -206,7 +206,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
                       ->addParam('boolean', array(), 3);
         $params = $this->service->getParams();
 
-        $this->assertEquals(3, count($params));
+        $this->assertCount(3, $params);
 
         $param = array_shift($params);
         $this->assertEquals('string', $param['type'], var_export($params, 1));
@@ -244,7 +244,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
         ));
         $params = $this->service->getParams();
 
-        $this->assertEquals(3, count($params));
+        $this->assertCount(3, $params);
         $param = array_shift($params);
         $this->assertEquals('string', $param['type']);
         $this->assertEquals('foo', $param['name']);
@@ -260,7 +260,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
     {
         $this->testShouldBeAbleToAddMultipleParamsAtOnce();
         $params = $this->service->getParams();
-        $this->assertEquals(3, count($params));
+        $this->assertCount(3, $params);
 
         $this->service->setParams(array(
             array('type' => 'string'),
@@ -268,7 +268,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
         ));
         $test = $this->service->getParams();
         $this->assertNotEquals($params, $test);
-        $this->assertEquals(2, count($test));
+        $this->assertCount(2, $test);
     }
 
     public function testReturnShouldBeNullByDefault()
@@ -342,7 +342,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
 
         $this->assertArrayHasKey('parameters', $smd);
         $params = $smd['parameters'];
-        $this->assertEquals(3, count($params));
+        $this->assertCount(3, $params);
         $param = array_shift($params);
         $this->assertEquals('boolean', $param['type']);
         $param = array_shift($params);
