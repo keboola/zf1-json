@@ -546,5 +546,7 @@ class Zend_Json_Server extends Zend_Server_Abstract
         }
 
         $this->getResponse()->setResult($result);
+
+        return null;
     }
 }
