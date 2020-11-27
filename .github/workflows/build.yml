@@ -17,7 +17,7 @@ jobs:
                 composer-args: ['', '--prefer-lowest']
                 include:
                     - operating-system: ubuntu-latest
-                      php-versioans: '8.0'
+                      php-versions: '8.0'
                       composer-args: '--ignore-platform-reqs --no-scripts'
                     - operating-system: ubuntu-latest
                       php-versions: '8.0'
