@@ -413,7 +413,7 @@ EOT;
         // Test if it is not a NULL object.
         $this->assertNotNull($phpArray, 'JSON result for XML input 5 is NULL');
         // Test for one of the expected CDATA fields in the JSON result.
-        $this->assertContains('Lois & Clark', $phpArray['tvshows']['show'][1]['name'], 'The CDATA name converted from XML input 5 is not correct');
+        $this->assertStringContainsString('Lois & Clark', $phpArray['tvshows']['show'][1]['name'], 'The CDATA name converted from XML input 5 is not correct');
     } // End of function testUsingXML5
 
     /**
@@ -495,9 +495,9 @@ EOT;
         // Test if it is not a NULL object.
         $this->assertNotNull($phpArray, 'JSON result for XML input 6 is NULL');
         // Test for one of the expected fields in the JSON result.
-        $this->assertContains('Zend', $phpArray['demo']['framework']['name'], 'The framework name field converted from XML input 6 is not correct');
+        $this->assertStringContainsString('Zend', $phpArray['demo']['framework']['name'], 'The framework name field converted from XML input 6 is not correct');
         // Test for one of the expected CDATA fields in the JSON result.
-        $this->assertContains('echo getMovies()->asXML();', $phpArray['demo']['listing']['code'], 'The CDATA code converted from XML input 6 is not correct');
+        $this->assertStringContainsString('echo getMovies()->asXML();', $phpArray['demo']['listing']['code'], 'The CDATA code converted from XML input 6 is not correct');
     } // End of function testUsingXML6
 
     /**
