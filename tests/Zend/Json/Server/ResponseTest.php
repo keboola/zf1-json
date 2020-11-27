@@ -40,7 +40,7 @@ class Zend_Json_Server_ResponseTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->response = new Zend_Json_Server_Response();
     }
@@ -51,7 +51,7 @@ class Zend_Json_Server_ResponseTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 
@@ -121,7 +121,7 @@ class Zend_Json_Server_ResponseTest extends PHPUnit\Framework\TestCase
         $json = $this->response->toJson();
         $test = Zend_Json::decode($json);
 
-        $this->assertInternalType('array', $test);
+        $this->assertIsArray($test);
         $this->assertArrayHasKey('result', $test);
         // assertion changed to false, because 'error' may not coexist with 'result'
         $this->assertArrayNotHasKey('error', $test, "'error' may not coexist with 'result'");
@@ -144,7 +144,7 @@ class Zend_Json_Server_ResponseTest extends PHPUnit\Framework\TestCase
         $json = $this->response->toJson();
         $test = Zend_Json::decode($json);
 
-        $this->assertInternalType('array', $test);
+        $this->assertIsArray($test);
         $this->assertArrayNotHasKey('result', $test, "'result' may not coexist with 'error'");
         $this->assertArrayHasKey('id', $test);
         $this->assertArrayNotHasKey('jsonrpc', $test);
@@ -161,7 +161,7 @@ class Zend_Json_Server_ResponseTest extends PHPUnit\Framework\TestCase
         $json = $this->response->__toString();
         $test = Zend_Json::decode($json);
 
-        $this->assertInternalType('array', $test);
+        $this->assertIsArray($test);
         $this->assertArrayHasKey('result', $test);
         $this->assertArrayNotHasKey('error', $test, "'error' may not coexist with 'result'");
         $this->assertArrayHasKey('id', $test);

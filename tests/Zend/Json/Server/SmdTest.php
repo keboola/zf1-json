@@ -40,7 +40,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->smd = new Zend_Json_Server_Smd();
     }
@@ -51,7 +51,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 
@@ -182,7 +182,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit\Framework\TestCase
     public function testServicesShouldBeEmptyByDefault()
     {
         $services = $this->smd->getServices();
-        $this->assertInternalType('array', $services);
+        $this->assertIsArray($services);
         $this->assertEmpty($services);
     }
 
@@ -307,7 +307,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit\Framework\TestCase
         $this->smd->setOptions($options);
         $smd = $this->smd->toDojoArray();
 
-        $this->assertInternalType('array', $smd);
+        $this->assertIsArray($smd);
 
         $this->assertArrayHasKey('SMDVersion', $smd);
         $this->assertArrayHasKey('serviceType', $smd);
@@ -324,7 +324,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit\Framework\TestCase
         $this->assertArrayHasKey('parameters', $foo);
         $this->assertEquals('foo', $foo['name']);
         $this->assertEquals($this->smd->getTarget(), $foo['serviceURL']);
-        $this->assertInternalType('array', $foo['parameters']);
+        $this->assertIsArray($foo['parameters']);
         $this->assertCount(1, $foo['parameters']);
 
         $bar = array_shift($methods);
@@ -333,7 +333,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit\Framework\TestCase
         $this->assertArrayHasKey('parameters', $bar);
         $this->assertEquals('bar', $bar['name']);
         $this->assertEquals($this->smd->getTarget(), $bar['serviceURL']);
-        $this->assertInternalType('array', $bar['parameters']);
+        $this->assertIsArray($bar['parameters']);
         $this->assertCount(1, $bar['parameters']);
     }
 
@@ -381,7 +381,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit\Framework\TestCase
 
     public function validateServiceArray(array $smd, array $options)
     {
-        $this->assertInternalType('array', $smd);
+        $this->assertIsArray($smd);
 
         $this->assertArrayHasKey('SMDVersion', $smd);
         $this->assertArrayHasKey('target', $smd);

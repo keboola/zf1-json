@@ -40,7 +40,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->service = new Zend_Json_Server_Smd_Service('foo');
     }
@@ -51,7 +51,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 
@@ -139,7 +139,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
         $this->testTargetShouldBeNullInitially();
         $this->service->setTarget(123);
         $value = $this->service->getTarget();
-        $this->assertInternalType('string', $value);
+        $this->assertIsString($value);
         $this->assertEquals((string) 123, $value);
     }
 
@@ -185,7 +185,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
         $params = $this->service->getParams();
         $param  = array_shift($params);
         $test   = $param['type'];
-        $this->assertInternalType('array', $test);
+        $this->assertIsArray($test);
         $this->assertEquals($type, $test);
     }
 
@@ -315,7 +315,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
         $smd  = Zend_Json::decode($json);
 
         $this->assertArrayHasKey('foo', $smd);
-        $this->assertInternalType('array', $smd['foo']);
+        $this->assertIsArray($smd['foo']);
 
         $this->validateSmdArray($smd['foo']);
     }
