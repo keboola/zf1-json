@@ -902,6 +902,12 @@ EOB;
         $this->assertTrue(isset($object->_empty_));
         $this->assertEquals('test', $object->_empty_);
     }
+
+    public function testCanDecodeNullAndEmptyValue()
+    {
+        $this->assertSame(null, Zend_Json::decode(null));
+        $this->assertSame('', Zend_Json::decode(''));
+    }
 }
 
 /**
