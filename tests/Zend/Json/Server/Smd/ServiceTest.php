@@ -40,7 +40,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->service = new Zend_Json_Server_Smd_Service('foo');
     }
@@ -51,7 +51,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 
@@ -61,14 +61,14 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
             $service = new Zend_Json_Server_Smd_Service(null);
             $this->fail('Should throw exception when no name set');
         } catch (Zend_Json_Server_Exception $e) {
-            $this->assertContains('requires a name', $e->getMessage());
+            $this->assertStringContainsString('requires a name', $e->getMessage());
         }
 
         try {
             $service = new Zend_Json_Server_Smd_Service(array());
             $this->fail('Should throw exception when no name set');
         } catch (Zend_Json_Server_Exception $e) {
-            $this->assertContains('requires a name', $e->getMessage());
+            $this->assertStringContainsString('requires a name', $e->getMessage());
         }
     }
 
@@ -78,13 +78,13 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
             $this->service->setName('0ab-?');
             $this->fail('Invalid name should throw exception');
         } catch (Zend_Json_Server_Exception $e) {
-            $this->assertContains('Invalid name', $e->getMessage());
+            $this->assertStringContainsString('Invalid name', $e->getMessage());
         }
         try {
             $this->service->setName('ab-?');
             $this->fail('Invalid name should throw exception');
         } catch (Zend_Json_Server_Exception $e) {
-            $this->assertContains('Invalid name', $e->getMessage());
+            $this->assertStringContainsString('Invalid name', $e->getMessage());
         }
     }
 
@@ -106,13 +106,13 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
             $this->service->setTransport('GET');
             $this->fail('Invalid transport should throw exception');
         } catch (Zend_Json_Server_Exception $e) {
-            $this->assertContains('Invalid transport', $e->getMessage());
+            $this->assertStringContainsString('Invalid transport', $e->getMessage());
         }
         try {
             $this->service->setTransport('REST');
             $this->fail('Invalid transport should throw exception');
         } catch (Zend_Json_Server_Exception $e) {
-            $this->assertContains('Invalid transport', $e->getMessage());
+            $this->assertStringContainsString('Invalid transport', $e->getMessage());
         }
     }
 
@@ -139,7 +139,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
         $this->testTargetShouldBeNullInitially();
         $this->service->setTarget(123);
         $value = $this->service->getTarget();
-        $this->assertInternalType('string', $value);
+        $this->assertIsString($value);
         $this->assertEquals((string) 123, $value);
     }
 
@@ -159,7 +159,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
             $this->service->setEnvelope('JSON-P');
             $this->fail('Should not be able to set non-JSON-RPC spec envelopes');
         } catch (Zend_Json_Server_Exception $e) {
-            $this->assertContains('Invalid envelope', $e->getMessage());
+            $this->assertStringContainsString('Invalid envelope', $e->getMessage());
         }
     }
 
@@ -185,7 +185,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
         $params = $this->service->getParams();
         $param  = array_shift($params);
         $test   = $param['type'];
-        $this->assertInternalType('array', $test);
+        $this->assertIsArray($test);
         $this->assertEquals($type, $test);
     }
 
@@ -195,7 +195,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
             $this->service->addParam(new stdClass);
             $this->fail('Invalid param type should throw exception');
         } catch (Zend_Json_Server_Exception $e) {
-            $this->assertContains('Invalid param type', $e->getMessage());
+            $this->assertStringContainsString('Invalid param type', $e->getMessage());
         }
     }
 
@@ -297,7 +297,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
             $this->service->setReturn(new stdClass);
             $this->fail('Invalid return type should throw exception');
         } catch (Zend_Json_Server_Exception $e) {
-            $this->assertContains('Invalid param type', $e->getMessage());
+            $this->assertStringContainsString('Invalid param type', $e->getMessage());
         }
     }
 
@@ -315,7 +315,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
         $smd  = Zend_Json::decode($json);
 
         $this->assertArrayHasKey('foo', $smd);
-        $this->assertInternalType('array', $smd['foo']);
+        $this->assertIsArray($smd['foo']);
 
         $this->validateSmdArray($smd['foo']);
     }

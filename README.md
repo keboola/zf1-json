@@ -1,6 +1,6 @@
-Zend Framework 1 - Json
-============================
-[![Build Status](https://travis-ci.com/diablomedia/zf1-json.svg?branch=master)](https://travis-ci.com/diablomedia/zf1-json)
+# Zend Framework 1 - Json
+
+[![Build](https://github.com/diablomedia/zf1-json/workflows/Build/badge.svg?event=push)](https://github.com/diablomedia/zf1-json/actions?query=workflow%3ABuild+event%3Apush)
 [![codecov](https://codecov.io/gh/diablomedia/zf1-json/branch/master/graph/badge.svg)](https://codecov.io/gh/diablomedia/zf1-json)
 [![Latest Stable Version](https://poser.pugx.org/diablomedia/zendframework1-json/v/stable)](https://packagist.org/packages/diablomedia/zendframework1-json)
 [![Total Downloads](https://poser.pugx.org/diablomedia/zendframework1-json/downloads)](https://packagist.org/packages/diablomedia/zendframework1-json)

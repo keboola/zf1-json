@@ -40,7 +40,7 @@ class Zend_Json_ServerTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->server = new Zend_Json_Server();
     }
@@ -51,7 +51,7 @@ class Zend_Json_ServerTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 
@@ -236,7 +236,7 @@ class Zend_Json_ServerTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('This is a test service', $this->server->getDescription());
 
         $services = $smd->getServices();
-        $this->assertInternalType('array', $services);
+        $this->assertIsArray($services);
         $this->assertTrue(0 < count($services));
         $this->assertArrayHasKey('strtolower', $services);
         $methods = get_class_methods('Zend_Json_Server');
@@ -281,7 +281,7 @@ class Zend_Json_ServerTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($response instanceof Zend_Json_Server_Response);
         $this->assertFalse($response->isError());
         $result = $response->getResult();
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertTrue(3 == count($result));
         $this->assertEquals('two', $result[1], var_export($result, 1));
         $this->assertNull($result[2]);
@@ -315,7 +315,7 @@ class Zend_Json_ServerTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($response instanceof Zend_Json_Server_Response);
         $this->assertFalse($response->isError());
         $result = $response->getResult();
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertTrue(3 == count($result));
         $this->assertEquals('foo', $result[1]);
         $this->assertEquals('bar', $result[2]);
@@ -336,7 +336,7 @@ class Zend_Json_ServerTest extends PHPUnit\Framework\TestCase
         $response = $this->server->handle();
         $result   = $response->getResult();
 
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertEquals(1, $result[0]);
         $this->assertEquals(2, $result[1]);
         $this->assertEquals(3, $result[2]);
@@ -357,7 +357,7 @@ class Zend_Json_ServerTest extends PHPUnit\Framework\TestCase
         $response = $this->server->handle();
         $result   = $response->getResult();
 
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertEquals(1, $result[0]);
         $this->assertEquals(2, $result[1]);
         $this->assertEquals(3, $result[2]);
@@ -412,7 +412,7 @@ class Zend_Json_ServerTest extends PHPUnit\Framework\TestCase
         $buffer = ob_get_clean();
 
         $decoded = Zend_Json::decode($buffer);
-        $this->assertInternalType('array', $decoded);
+        $this->assertIsArray($decoded);
         $this->assertArrayHasKey('result', $decoded);
         $this->assertArrayHasKey('id', $decoded);
 

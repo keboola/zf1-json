@@ -33,12 +33,12 @@ class Zend_JsonTest extends PHPUnit\Framework\TestCase
 {
     private $_originalUseBuiltinEncoderDecoderValue;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->_originalUseBuiltinEncoderDecoderValue = Zend_Json::$useBuiltinEncoderDecoder;
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         Zend_Json::$useBuiltinEncoderDecoder = $this->_originalUseBuiltinEncoderDecoderValue;
     }
@@ -266,7 +266,7 @@ EOB;
 
         $encoded = Zend_Json_Encoder::encode($value);
         $decoded = Zend_Json_Decoder::decode($encoded, Zend_Json::TYPE_OBJECT);
-        $this->assertInternalType('object', $decoded, 'Not decoded as an object');
+        $this->assertIsObject($decoded, 'Not decoded as an object');
         $this->assertTrue($decoded instanceof StdClass, 'Not a StdClass object');
         $this->assertTrue(isset($decoded->one), 'Expected property not set');
         $this->assertEquals($value->one, $decoded->one, 'Unexpected value');
@@ -440,21 +440,21 @@ EOB;
     {
         $encoded = Zend_Json_Encoder::encodeClass('Zend_JsonTest_Object');
 
-        $this->assertContains("Class.create('Zend_JsonTest_Object'", $encoded);
-        $this->assertContains("ZAjaxEngine.invokeRemoteMethod(this, 'foo'", $encoded);
-        $this->assertContains("ZAjaxEngine.invokeRemoteMethod(this, 'bar'", $encoded);
-        $this->assertNotContains("ZAjaxEngine.invokeRemoteMethod(this, 'baz'", $encoded);
+        $this->assertStringContainsString("Class.create('Zend_JsonTest_Object'", $encoded);
+        $this->assertStringContainsString("ZAjaxEngine.invokeRemoteMethod(this, 'foo'", $encoded);
+        $this->assertStringContainsString("ZAjaxEngine.invokeRemoteMethod(this, 'bar'", $encoded);
+        $this->assertStringNotContainsString("ZAjaxEngine.invokeRemoteMethod(this, 'baz'", $encoded);
 
-        $this->assertContains('variables:{foo:"bar",bar:"baz"}', $encoded);
-        $this->assertContains('constants : {FOO: "bar"}', $encoded);
+        $this->assertStringContainsString('variables:{foo:"bar",bar:"baz"}', $encoded);
+        $this->assertStringContainsString('constants : {FOO: "bar"}', $encoded);
     }
 
     public function testEncodeClasses()
     {
         $encoded = Zend_Json_Encoder::encodeClasses(array('Zend_JsonTest_Object', 'Zend_JsonTest'));
 
-        $this->assertContains("Class.create('Zend_JsonTest_Object'", $encoded);
-        $this->assertContains("Class.create('Zend_JsonTest'", $encoded);
+        $this->assertStringContainsString("Class.create('Zend_JsonTest_Object'", $encoded);
+        $this->assertStringContainsString("Class.create('Zend_JsonTest'", $encoded);
     }
 
     public function testToJsonSerialization()
