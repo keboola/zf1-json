@@ -810,10 +810,6 @@ EOB;
      */
     public function testEncoderEscapesNamespacedClassNamesProperly()
     {
-        if (version_compare(PHP_VERSION, '5.3.0') === -1) {
-            $this->markTestSkipped('Namespaces not available in PHP < 5.3.0');
-        }
-
         require_once dirname(__FILE__) . '/Json/_files/ZF11356-NamespacedClass.php';
         $className  = '\Zend\JsonTest\ZF11356\NamespacedClass';
         $inputValue = new $className(array('foo'));
@@ -1023,6 +1019,7 @@ class ZF12347_IteratorAggregate implements IteratorAggregate
         'baz' => 5
     );
 
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new ArrayIterator($this->array);
