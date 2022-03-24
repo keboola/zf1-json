@@ -200,7 +200,7 @@ class Zend_Json_Server_SmdTest extends PHPUnit\Framework\TestCase
         );
         $this->smd->addService($service);
         $foo = $this->smd->getService('foo');
-        $this->assertTrue($foo instanceof Zend_Json_Server_Smd_Service);
+        $this->assertInstanceOf(Zend_Json_Server_Smd_Service::class, $foo);
         $this->assertEquals('foo', $foo->getName());
     }
 

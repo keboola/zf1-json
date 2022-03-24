@@ -267,7 +267,7 @@ EOB;
         $encoded = Zend_Json_Encoder::encode($value);
         $decoded = Zend_Json_Decoder::decode($encoded, Zend_Json::TYPE_OBJECT);
         $this->assertIsObject($decoded, 'Not decoded as an object');
-        $this->assertTrue($decoded instanceof StdClass, 'Not a StdClass object');
+        $this->assertInstanceOf(StdClass::class, $decoded, 'Not a StdClass object');
         $this->assertTrue(isset($decoded->one), 'Expected property not set');
         $this->assertEquals($value->one, $decoded->one, 'Unexpected value');
     }

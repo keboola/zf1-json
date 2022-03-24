@@ -273,6 +273,7 @@ class Zend_Json
             }
         } else {
             $childArray = array();
+            $subChild   = array();
             foreach ($children as $child) {
                 $childname = $child->getName();
                 $element   = self::_processXml($child, $ignoreXmlAttributes, $recursionDepth + 1);

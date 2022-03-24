@@ -85,7 +85,7 @@ class Zend_Json_Server_RequestTest extends PHPUnit\Framework\TestCase
             $this->assertNull($this->request->getParam('foo'));
             $params = $this->request->getParams();
             ++$count;
-            $this->assertEquals($count, count($params));
+            $this->assertCount($count, $params);
         }
     }
 
