@@ -38,7 +38,7 @@ class Zend_Json_Server_RequestTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->request = new Zend_Json_Server_Request();
     }
@@ -49,7 +49,7 @@ class Zend_Json_Server_RequestTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 
@@ -85,7 +85,7 @@ class Zend_Json_Server_RequestTest extends PHPUnit\Framework\TestCase
             $this->assertNull($this->request->getParam('foo'));
             $params = $this->request->getParams();
             ++$count;
-            $this->assertEquals($count, count($params));
+            $this->assertCount($count, $params);
         }
     }
 
@@ -260,15 +260,15 @@ class Zend_Json_Server_RequestTest extends PHPUnit\Framework\TestCase
     public function validateJson($json, array $options)
     {
         $test = Zend_Json::decode($json);
-        $this->assertInternalType('array', $test, var_export($json, 1));
+        $this->assertIsArray($test, var_export($json, 1));
 
         $this->assertArrayHasKey('id', $test);
         $this->assertArrayHasKey('method', $test);
         $this->assertArrayHasKey('params', $test);
 
-        $this->assertInternalType('string', $test['id']);
-        $this->assertInternalType('string', $test['method']);
-        $this->assertInternalType('array', $test['params']);
+        $this->assertIsString($test['id']);
+        $this->assertIsString($test['method']);
+        $this->assertIsArray($test['params']);
 
         $this->assertEquals($options['id'], $test['id']);
         $this->assertEquals($options['method'], $test['method']);

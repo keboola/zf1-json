@@ -40,7 +40,7 @@ class Zend_Json_Server_ErrorTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->error = new Zend_Json_Server_Error();
     }
@@ -51,7 +51,7 @@ class Zend_Json_Server_ErrorTest extends PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 
@@ -146,14 +146,14 @@ class Zend_Json_Server_ErrorTest extends PHPUnit\Framework\TestCase
 
     public function validateArray($error)
     {
-        $this->assertInternalType('array', $error);
+        $this->assertIsArray($error);
         $this->assertArrayHasKey('code', $error);
         $this->assertArrayHasKey('message', $error);
         $this->assertArrayHasKey('data', $error);
 
-        $this->assertInternalType('int', $error['code']);
-        $this->assertInternalType('string', $error['message']);
-        $this->assertInternalType('array', $error['data']);
+        $this->assertIsInt($error['code']);
+        $this->assertIsString($error['message']);
+        $this->assertIsArray($error['data']);
 
         $this->assertEquals($this->error->getCode(), $error['code']);
         $this->assertEquals($this->error->getMessage(), $error['message']);
