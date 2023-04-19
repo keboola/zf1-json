@@ -34,6 +34,8 @@
  */
 class Zend_Json_Server_Smd_ServiceTest extends PHPUnit\Framework\TestCase
 {
+    protected $service;
+
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
