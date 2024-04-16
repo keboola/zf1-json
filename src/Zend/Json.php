@@ -67,15 +67,7 @@ class Zend_Json
         if (function_exists('json_decode') && self::$useBuiltinEncoderDecoder !== true) {
             $decode = json_decode($encodedValue, $objectDecodeType);
 
-            // php < 5.3
-            if (!function_exists('json_last_error')) {
-                if (strtolower($encodedValue) === 'null') {
-                    return null;
-                } elseif ($decode === null) {
-                    throw new Zend_Json_Exception('Decoding failed');
-                }
-            // php >= 5.3
-            } elseif (($jsonLastErr = json_last_error()) != JSON_ERROR_NONE) {
+            if (($jsonLastErr = json_last_error()) != JSON_ERROR_NONE) {
                 switch ($jsonLastErr) {
                     case JSON_ERROR_DEPTH:
                         throw new Zend_Json_Exception('Decoding failed: Maximum stack depth exceeded');
