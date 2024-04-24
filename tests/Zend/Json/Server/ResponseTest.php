@@ -34,6 +34,8 @@
  */
 class Zend_Json_Server_ResponseTest extends PHPUnit\Framework\TestCase
 {
+    protected $response;
+
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.

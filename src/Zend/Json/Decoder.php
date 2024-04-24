@@ -315,8 +315,8 @@ class Zend_Json_Decoder
 
         switch ($str[$i]) {
             case '{':
-               $this->_token = self::LBRACE;
-               break;
+                $this->_token = self::LBRACE;
+                break;
             case '}':
                 $this->_token = self::RBRACE;
                 break;
